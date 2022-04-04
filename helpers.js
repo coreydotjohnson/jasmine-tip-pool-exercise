@@ -24,3 +24,23 @@ function appendTd(tr, value) {
 
   tr.append(newTd);
 }
+
+//create a ‘td’ with the value ‘X’, when clicked it will delete the table row it belongs to
+function appendDeleteBtn(tr) {
+  let delBtn = document.createElement('button');
+  delBtn.innerText = 'X';
+  
+  //delete table row and allServers{} key
+  delBtn.addEventListener('click', function(event) {
+    let td = event.target.parentElement;
+    td.parentElement.remove();
+
+    let parentId = td.parentElement.id;
+    delete allServers[`${parentId}`];
+  });
+
+  let btnTd = document.createElement('td');
+  btnTd.append(delBtn);
+
+  tr.append(btnTd);
+}
