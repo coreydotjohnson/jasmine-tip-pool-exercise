@@ -16,15 +16,14 @@ describe("Servers test (with setup and tear-down)", function() {
     updateServerTable();
 
     let tableInfo = document.querySelectorAll('#serverTable tbody tr td');
-    expect(tableInfo.length).toEqual(2);
+    expect(tableInfo.length).toEqual(3);
     expect(tableInfo[0].textContent).toEqual('Alice');
     expect(tableInfo[1].textContent).toEqual('$0.00');
-
+    expect(tableInfo[2].textContent).toEqual('X');
   })
 
   afterEach(function() {
-    let serverRow = document.querySelector('#server' + serverId)
-    serverRow.remove();
+    serverTbody.innerHTML = '';
     serverId = 0;
     allServers = {};
   });
